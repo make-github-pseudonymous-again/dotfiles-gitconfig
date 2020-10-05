@@ -281,7 +281,10 @@
 
 	name = Aurélien Ooms
 	email = aurelien.ooms@gmail.com
+	signingkey = DB8D393E9FA999FBBEE0DB02762E8518D0403F03
 
 [credential]
 
 	helper = /usr/lib/git-core/git-credential-libsecret
+[commit]
+	gpgsign = true
