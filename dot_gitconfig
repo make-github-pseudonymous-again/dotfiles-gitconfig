@@ -1,10 +1,10 @@
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	l = ! git log --pretty=oneline -n 20 --graph --abbrev-commit --color | emojify
 
 	# Same as above but with all commits, authors and dates
-	lg = log --all --graph --pretty=format:'%C(auto)%h -%d%Creset %s %C(magenta)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = ! git log --all --graph --pretty=format:'%C(auto)%h -%d%Creset %s %C(magenta)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color | emojify | less -r
 
 	# View the current working tree status using the short format
 	s = status -s
@@ -76,7 +76,7 @@
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
 	# Show verbose output about tags, branches or remotes
-	tags = tag -l
+	tags = tag -n -l
 	branches = branch -a
 	remotes = remote -v
 
