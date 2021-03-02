@@ -84,7 +84,7 @@
 	remotes = remote -v
 
 	# Amend the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD
+	amend = commit --amend --no-edit
 
 	# Amend the last commits message
 	typo = commit --amend --verbose
