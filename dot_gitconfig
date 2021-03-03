@@ -195,7 +195,7 @@
 	sync = "!f() { git condstashpush && { if git pull && git push ; then git condstashpop ; else git condstashpop && false ; fi ; } ; } ; f"
 
 	# stash push, pull, stash pop
-	catchup = "!f() { git condstashpush && git pull && git condstashpop ; } ; f"
+	catchup = "!f() { git condstashpush && { if git pull ; then git condstashpop ; else git condstashpop && false ; fi ; } ; } ; f"
 
 [difftool.latex]
 	cmd = latexdiff-git "$LOCAL" "$REMOTE"
