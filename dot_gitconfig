@@ -192,7 +192,7 @@
 	condstashpop = "!f() { if git stash list | grep -q '' ; then git stash pop; else true ; fi ; } ; f"
 
 	# stash push, pull, push, stash pop
-	sync = "!f() { git condstashpush && git pull && git push && git condstashpop ; } ; f"
+	sync = "!f() { git condstashpush && { if git pull && git push ; then git condstashpop ; else git condstashpop && false ; fi ; } ; } ; f"
 
 	# stash push, pull, stash pop
 	catchup = "!f() { git condstashpush && git pull && git condstashpop ; } ; f"
