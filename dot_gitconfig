@@ -57,6 +57,9 @@
 	# Add hunks interactively but go directly to the patch step
 	ap = add -p
 
+	# Add hunks interactively but go directly to the patch step (only for files already staged)
+	aps = "! git status -z | grep -z '^[MAD]' | sed -z 's/^...//g' | xargs -0 --open-tty git add --patch --"
+
 	# Commit
 	c = commit --verbose
 
