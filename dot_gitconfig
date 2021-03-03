@@ -182,9 +182,6 @@
 	# Show the last tag
 	lt = describe --tags --abbrev=0
 
-	# commits
-	cc = "!f() { type=\"$1\" ; shift ; if [ $# -eq 0 ] ; then scope='' ; else scope=\"($@)\" ; fi ; GIT_EDITOR=\"vim -c 'startinsert!'\" git commit --message \"$(jq -r < $HOME/.config/conventional-commit/config .[\\\"$type\\\"].title)$scope: \" --edit --verbose ; } ; f"
-
 	# stash push only if there is something to push
 	condstashpush = "!f() { if git status --porcelain | grep -vq '^??' ; then git stash push ; else true ; fi ; } ; f"
 
