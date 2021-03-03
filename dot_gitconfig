@@ -181,8 +181,18 @@
 
 	# commits
 	cc = "!f() { type=\"$1\" ; shift ; if [ $# -eq 0 ] ; then scope='' ; else scope=\"($@)\" ; fi ; GIT_EDITOR=\"vim -c 'startinsert!'\" git commit --message \"$(jq -r < $HOME/.config/conventional-commit/config .[\\\"$type\\\"].title)$scope: \" --edit --verbose ; } ; f"
-	# stash, pull, push, stash pop
-	sync = "!f() { git stash && git pull && git push && git stash pop; } ; f"
+
+	# stash push only if there is something to push
+	condstashpush = "!f() { if git status --porcelain | grep -vq '^??' ; then git stash push ; else true ; fi ; } ; f"
+
+	# stash pop only if there is something to pop
+	condstashpop = "!f() { if git stash list | grep -q '' ; then git stash pop; else true ; fi ; } ; f"
+
+	# stash push, pull, push, stash pop
+	sync = "!f() { git condstashpush && git pull && git push && git condstashpop ; } ; f"
+
+	# stash push, pull, stash pop
+	catchup = "!f() { git condstashpush && git pull && git condstashpop ; } ; f"
 
 [difftool.latex]
 	cmd = latexdiff-git "$LOCAL" "$REMOTE"
