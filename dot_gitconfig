@@ -61,7 +61,9 @@
 	aps = "! git status -z | grep -z '^[MAD]' | sed -z 's/^...//g' | xargs -0 --open-tty --no-run-if-empty git add --patch --"
 
 	# Commit
-	c = ! GIT_EDITOR=\"vim -c 'startinsert!'\" git commit --verbose
+	c = ! GIT_EDITOR=\"vim +startinsert\" git commit --verbose
+	j = ! GIT_EDITOR=\"vim +startinsert!\" git commit --message H --edit --verbose
+	k = ! GIT_EDITOR=\"vim +startinsert!\" git commit --message B --edit --verbose
 
 	# Add all untracked files and unstaged changes
 	aa = add -A
