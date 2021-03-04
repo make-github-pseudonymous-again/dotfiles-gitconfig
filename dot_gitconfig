@@ -95,7 +95,7 @@
 	typo = commit --amend --verbose
 
 	# Credit an author on the latest commit
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" --no-edit ; }; f"
 
 	# Retry last commit rejected by commit-msg hook
 	retry = ! git commit --no-status --edit --file "$(git rev-parse --git-path COMMIT_EDITMSG)"
