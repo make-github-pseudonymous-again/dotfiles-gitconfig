@@ -97,6 +97,9 @@
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" --no-edit ; }; f"
 
+	# Uncredit
+	uncredit = commit --amend --reset-author --no-edit
+
 	# Retry last commit rejected by commit-msg hook
 	retry = ! git commit --no-status --edit --file "$(git rev-parse --git-path COMMIT_EDITMSG)"
 
