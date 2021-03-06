@@ -235,10 +235,19 @@
 
 [color "diff"]
 
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	commit = yellow bold
+	whitespace = red reverse
+
+[color "diff-highlight"]
+
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 
 [color "status"]
 
