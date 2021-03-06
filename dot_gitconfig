@@ -215,7 +215,7 @@
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 	# Configure git to use diff-so-fancy for all diff output
-	pager = "diff-so-fancy | less --tabs=4 -RFX"
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [init]
 
@@ -322,5 +322,7 @@
 [credential]
 
 	helper = /usr/lib/git-core/git-credential-libsecret
+
 [commit]
+
 	gpgsign = true
