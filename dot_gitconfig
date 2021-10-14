@@ -4,7 +4,7 @@
 	l = ! git log --pretty=oneline -n 20 --graph --abbrev-commit --color | emojify
 
 	# Same as above but with all commits, authors and dates
-	lg = ! git log --all --graph --pretty=format:'%C(auto)%h -%d%Creset %s %C(magenta)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color | emojify | less -r
+	lg = ! git log --all --graph --pretty=format:'%C(auto)%h -%d%Creset %s %C(magenta)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color | emojify | less -R
 
 	# Print all commits since last tag
 	release = ! git log --pretty=oneline --abbrev-commit "HEAD...$({ git rev-list --max-parents=0 HEAD ; git tag -l ; } | tail -n1)"
