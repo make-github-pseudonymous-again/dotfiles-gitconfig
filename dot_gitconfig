@@ -112,6 +112,7 @@
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
 
+	# Rebase continue
 	rbc = rebase --continue
 
 	# Find branches containing commit
