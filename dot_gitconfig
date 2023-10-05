@@ -195,11 +195,11 @@
 	# Show a diff of the last commit
 	dl = diff --staged HEAD^
 	# Show modified files in last commit
-	dlf = "!git ll -1"
+	dlf = lf -1
 	# Diff last commit of given revision
 	dr  = "!f() { git diff "$1"^.."$1"; }; f"
 	# List changed files in last commit of given revision
-	drf  = "!f() { git ll "$1"^.."$1"; }; f"
+	drf  = "!f() { git lf "$1"^.."$1"; }; f"
 	# Show the last tag
 	lt = describe --tags --abbrev=0
 
