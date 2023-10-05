@@ -1,10 +1,32 @@
 [alias]
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = ! git log --pretty=oneline -n 20 --graph --abbrev-commit --color | emojify
+	# Log graph
+	lg = log --graph
 
-	# Same as above but with all commits, authors and dates
-	lg = ! git log --all --graph --pretty=format:'%C(auto)%h -%d%Creset %s %C(magenta)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color | emojify | less -R
+	# List oneline commits showing commit relative datetime and author name
+	l1 = lg --pretty=format:"%C(auto)%h%d%Creset\\ %s\\ %C(magenta)(%cd)\\ %C(bold\\ blue)<%an>%Creset" --date=relative
+
+	# Same but with emojified output
+	l = ! git l1 --color | emojify | less --tabs=4 -RFX
+
+	# List ALL oneline commits showing commit relative datetime and author name
+	la = ! git l1 --all --color | emojify | less --tabs=4 -RFX
+
+	# List commits showing changed files
+	lf = ! git l1 --numstat --color | emojify | less --tabs=4 -RFX
+
+	# List oneline commits showing commit relative datetime and commiter name
+	lc = lg --pretty=format:"%C(auto)%h%d%Creset\\ %s\\ %C(magenta)(%cd)\\ %C(bold\\ blue)<%cn>%Creset" --date=relative
+
+	# List oneline commits showing author relative datetime and author name
+	ld = lg --pretty=format:"%C(auto)%h%d%Creset\\ %s\\ %C(magenta)(%ad)\\ %C(bold\\ blue)<%an>%Creset" --date=relative
+
+	# List oneline commits showing author date and author name
+	lds = lg --pretty=format:"%C(auto)%h%d%Creset\\ %s\\ %C(magenta)(%ad)\\ %C(bold\\ blue)<%an>%Creset" --date=short
+
+	# List commits for piping
+	lp = log --pretty=format:"%h\\ %s\\ <%cn>"
+
 
 	# Print all commits since last tag
 	release = ! git log --pretty=oneline --abbrev-commit "HEAD...$({ git rev-list --max-parents=0 HEAD ; git tag -l ; } | tail -n1)"
@@ -168,18 +190,6 @@
 	aliases = "!git config -l | grep '^alias\\.' | cut -d'=' -f1 | cut -d'.' -f2"
 
 	# From http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples
-	# List commits in short form, with colors and branch/tag annotations
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	# List commits showing changed files
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-	# List commits with no colors for piping
-	lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-	# List oneline commits showing dates
-	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-	# List oneline commits showing relative time
-	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-	# A short gi log
-	le = log --oneline --decorate
 	# Show the history of a file with diffs
 	fl = log -u
 	# Show a diff of the last commit
