@@ -162,10 +162,10 @@
 	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
 	# List available commands and aliases
-	lc = "!f() { git help -a | grep '^  [a-z]' | tr ' ' '\n' | grep -v '^$'; git la; } ; f"
+	commands = "!f() { git help -a | grep '^  [a-z]' | tr ' ' '\n' | grep -v '^$'; git la; } ; f"
 
 	# List available aliases
-	la = "!git config -l | grep '^alias\\.' | cut -d'=' -f1 | cut -d'.' -f2"
+	aliases = "!git config -l | grep '^alias\\.' | cut -d'=' -f1 | cut -d'.' -f2"
 
 	# From http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples
 	# List commits in short form, with colors and branch/tag annotations
