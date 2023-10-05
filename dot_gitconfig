@@ -115,6 +115,9 @@
 	# Rebase continue
 	rbc = rebase --continue
 
+	# Rebase "on"
+	ro = "!f() { git rebase -i \"$(git merge-base --fork-point \"$1\")\"; }; f"
+
 	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 
