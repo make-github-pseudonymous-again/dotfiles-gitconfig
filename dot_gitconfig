@@ -155,6 +155,9 @@
 	# Push and set upstream branch to origin for current branch
 	psuoc = ! git push --set-upstream origin "$(git branch --show-current)"
 
+	# Push on all remotes
+	psa = ! git remote | xargs -L1 git push
+
 	# Pull
 	pl = pull
 
