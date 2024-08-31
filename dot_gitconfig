@@ -146,6 +146,9 @@
 	# Push
 	ps = push
 
+	# Push with force
+	psf = push --force-with-lease
+
 	# Push and set upstream branch to origin
 	psuo = "!f() { git push --set-upstream origin \"$1:$1\"; }; f"
 
