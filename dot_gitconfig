@@ -40,20 +40,38 @@
 	# Diff line-wise
 	d = diff
 
+	# Diff with origin line-wise
+	do = ! git diff "origin/$(git branch --show-current)"
+
 	# Diff staged line-wise
 	ds = diff --staged
+
+	# Diff staged with origin line-wise
+	dos = do --staged
 
 	# Diff word-wise
 	dw = diff --color-words
 
+	# Diff with origin word-wise
+	dow = do --color-words
+
 	# Diff staged word-wise
 	dws = diff --color-words --staged
+
+	# Diff staged with originword-wise
+	dows = do --color-words --staged
 
 	# Diff character-wise
 	dt = diff --word-diff-regex=.
 
+	# Diff with origin character-wise
+	dot = do --word-diff-regex=.
+
 	# Diff staged character-wise
 	dts = diff --word-diff-regex=. --staged
+
+	# Diff staged with origin character-wise
+	dots = do --word-diff-regex=. --staged
 
 	# Show the diff between the latest commit and the current state
 	dp = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
