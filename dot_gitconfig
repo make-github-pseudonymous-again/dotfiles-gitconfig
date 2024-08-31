@@ -146,6 +146,12 @@
 	# Push
 	ps = push
 
+	# Push and set upstream branch to origin
+	psuo = "!f() { git push --set-upstream origin \"$1:$1\"; }; f"
+
+	# Push and set upstream branch to origin for current branch
+	psuoc = ! git push --set-upstream origin "$(git branch --show-current)"
+
 	# Pull
 	pl = pull
 
