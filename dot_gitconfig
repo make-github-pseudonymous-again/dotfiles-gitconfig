@@ -13,7 +13,7 @@
 	la = ! git l1 --all --color | emojify | less --tabs=4 -RFX
 
 	# List commits showing changed files
-	lf = ! git l1 --numstat --color | emojify | less --tabs=4 -RFX
+	lf = ! git l1 --stat --color | emojify | less --tabs=4 -RFX
 
 	# List oneline commits showing commit relative datetime and commiter name
 	lc = lg --pretty=format:"%C(auto)%h%d%Creset\\ %s\\ %C(magenta)(%cd)\\ %C(bold\\ blue)<%cn>%Creset" --date=relative
